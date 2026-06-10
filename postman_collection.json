@@ -1,0 +1,1207 @@
+{
+  "info": {
+    "_postman_id": "03041d0a-cb3e-4eb3-8918-565abda40474",
+    "name": "TaskFlow API",
+    "description": "Primetrade.ai Assignment — Task Management REST API with JWT Auth & RBAC",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42941036",
+    "_collection_link": "https://go.postman.co/collection/42941036-03041d0a-cb3e-4eb3-8918-565abda40474?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"secret1\",\n  \"role\": \"user\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Register",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\",\n  \"role\": \"user\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "349"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"15d-2hbkO5DMzFEatUoDi/l69eZF5io\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:10:33 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Account created successfully.\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjhkNWE4Yjc0MGIzMDNjNDZmYjBlNSIsImlhdCI6MTc4MTA2MTAzMywiZXhwIjoxNzgxNjY1ODMzfQ.fco1Iopz3IxFRP95AROeUSZ_Zmdj9cksFoN628YcxsY\",\n        \"user\": {\n            \"id\": \"6a28d5a8b740b303c46fb0e5\",\n            \"name\": \"John Doe\",\n            \"email\": \"john@example.com\",\n            \"role\": \"user\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Register (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Admin User\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin123\",\n  \"role\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Register (Admin)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Jain Doe\",\n  \"email\": \"jain1@example.com\",\n  \"password\": \"123456\",\n  \"role\": \"admin\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "351"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"15f-4A14mJAoocfn6FHuUqLCgP54nhY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:19:29 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Account created successfully.\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjhkN2MwYjc0MGIzMDNjNDZmYjBlZCIsImlhdCI6MTc4MTA2MTU2OSwiZXhwIjoxNzgxNjY2MzY5fQ.iC2Bx2fPFpXwPL9mKbwq48utX9o9MA6WDFmkbV3wlNc\",\n        \"user\": {\n            \"id\": \"6a28d7c0b740b303c46fb0ed\",\n            \"name\": \"Jain Doe\",\n            \"email\": \"jain1@example.com\",\n            \"role\": \"admin\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.token) {",
+                  "  pm.collectionVariables.set('token', json.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"secret1\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "343"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"157-kJrdJ27Xx8tKqJeVmoaDYMEG8NM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:19:52 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Logged in successfully.\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjhkNWE4Yjc0MGIzMDNjNDZmYjBlNSIsImlhdCI6MTc4MTA2MTU5MiwiZXhwIjoxNzgxNjY2MzkyfQ.Qp2khGIlWeY5Lxtssj7XCrSVzvDnXN6xMOuhlwsqhpI\",\n        \"user\": {\n            \"id\": \"6a28d5a8b740b303c46fb0e5\",\n            \"name\": \"John Doe\",\n            \"email\": \"john@example.com\",\n            \"role\": \"user\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get My Profile",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/auth/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "164"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"a4-13mCQY19NjRVQj3oucyaisrCfuQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:20:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": {\n        \"user\": {\n            \"id\": \"6a28d5a8b740b303c46fb0e5\",\n            \"name\": \"John Doe\",\n            \"email\": \"john@example.com\",\n            \"role\": \"user\",\n            \"createdAt\": \"2026-06-10T03:10:32.249Z\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Users (Admin only)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "users"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Users (Admin only)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/auth/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "733"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2dd-ITLPtybqlDOs/mChmipxC1CGpeU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:20:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"count\": 4,\n    \"data\": {\n        \"users\": [\n            {\n                \"_id\": \"6a27e6c6d2c4e016d686c957\",\n                \"name\": \"yeskumar\",\n                \"email\": \"yes@gmail.com\",\n                \"role\": \"user\",\n                \"createdAt\": \"2026-06-09T10:11:18.142Z\",\n                \"updatedAt\": \"2026-06-09T10:11:18.142Z\"\n            },\n            {\n                \"_id\": \"6a28d5a8b740b303c46fb0e5\",\n                \"name\": \"John Doe\",\n                \"email\": \"john@example.com\",\n                \"role\": \"user\",\n                \"createdAt\": \"2026-06-10T03:10:32.249Z\",\n                \"updatedAt\": \"2026-06-10T03:10:32.249Z\"\n            },\n            {\n                \"_id\": \"6a28d5f9b740b303c46fb0e9\",\n                \"name\": \"Jain Doe\",\n                \"email\": \"jain@example.com\",\n                \"role\": \"admin\",\n                \"createdAt\": \"2026-06-10T03:11:53.925Z\",\n                \"updatedAt\": \"2026-06-10T03:11:53.925Z\"\n            },\n            {\n                \"_id\": \"6a28d7c0b740b303c46fb0ed\",\n                \"name\": \"Jain Doe\",\n                \"email\": \"jain1@example.com\",\n                \"role\": \"admin\",\n                \"createdAt\": \"2026-06-10T03:19:28.810Z\",\n                \"updatedAt\": \"2026-06-10T03:19:28.810Z\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "Create Task",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Design database schema\",\n  \"description\": \"Create ERD and define all relationships\",\n  \"status\": \"pending\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tasks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Task",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Design database schema\",\n  \"description\": \"Create ERD and define all relationships\",\n  \"status\": \"pending\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tasks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "339"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"153-QtmLrP9fun74QvWjd3sAVTJ461A\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:21:14 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Task created successfully.\",\n    \"data\": {\n        \"task\": {\n            \"title\": \"Design database schema\",\n            \"description\": \"Create ERD and define all relationships\",\n            \"status\": \"pending\",\n            \"createdBy\": \"6a28d7c0b740b303c46fb0ed\",\n            \"_id\": \"6a28d82ab740b303c46fb0f7\",\n            \"createdAt\": \"2026-06-10T03:21:14.393Z\",\n            \"updatedAt\": \"2026-06-10T03:21:14.393Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Tasks",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tasks?page=1&limit=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Tasks",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tasks?page=1&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "693"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2b5-pwza3LQzOxJ8y9BpiU9N5g/6biI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:21:28 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"count\": 2,\n    \"total\": 2,\n    \"page\": 1,\n    \"totalPages\": 1,\n    \"data\": {\n        \"tasks\": [\n            {\n                \"_id\": \"6a28d82ab740b303c46fb0f7\",\n                \"title\": \"Design database schema\",\n                \"description\": \"Create ERD and define all relationships\",\n                \"status\": \"pending\",\n                \"createdBy\": {\n                    \"_id\": \"6a28d7c0b740b303c46fb0ed\",\n                    \"name\": \"Jain Doe\",\n                    \"email\": \"jain1@example.com\",\n                    \"role\": \"admin\"\n                },\n                \"createdAt\": \"2026-06-10T03:21:14.393Z\",\n                \"updatedAt\": \"2026-06-10T03:21:14.393Z\"\n            },\n            {\n                \"_id\": \"6a27e700d2c4e016d686c960\",\n                \"title\": \"edit\",\n                \"description\": \"edit youtube video\",\n                \"status\": \"pending\",\n                \"createdBy\": {\n                    \"_id\": \"6a27e6c6d2c4e016d686c957\",\n                    \"name\": \"yeskumar\",\n                    \"email\": \"yes@gmail.com\",\n                    \"role\": \"user\"\n                },\n                \"createdAt\": \"2026-06-09T10:12:16.219Z\",\n                \"updatedAt\": \"2026-06-09T10:12:16.219Z\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Tasks by Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tasks?status=pending",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Tasks by Status",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tasks?status=pending",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "pending"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "693"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2b5-pwza3LQzOxJ8y9BpiU9N5g/6biI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:21:37 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"count\": 2,\n    \"total\": 2,\n    \"page\": 1,\n    \"totalPages\": 1,\n    \"data\": {\n        \"tasks\": [\n            {\n                \"_id\": \"6a28d82ab740b303c46fb0f7\",\n                \"title\": \"Design database schema\",\n                \"description\": \"Create ERD and define all relationships\",\n                \"status\": \"pending\",\n                \"createdBy\": {\n                    \"_id\": \"6a28d7c0b740b303c46fb0ed\",\n                    \"name\": \"Jain Doe\",\n                    \"email\": \"jain1@example.com\",\n                    \"role\": \"admin\"\n                },\n                \"createdAt\": \"2026-06-10T03:21:14.393Z\",\n                \"updatedAt\": \"2026-06-10T03:21:14.393Z\"\n            },\n            {\n                \"_id\": \"6a27e700d2c4e016d686c960\",\n                \"title\": \"edit\",\n                \"description\": \"edit youtube video\",\n                \"status\": \"pending\",\n                \"createdBy\": {\n                    \"_id\": \"6a27e6c6d2c4e016d686c957\",\n                    \"name\": \"yeskumar\",\n                    \"email\": \"yes@gmail.com\",\n                    \"role\": \"user\"\n                },\n                \"createdAt\": \"2026-06-09T10:12:16.219Z\",\n                \"updatedAt\": \"2026-06-09T10:12:16.219Z\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Task by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tasks/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tasks",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6a28d82ab740b303c46fb0f7"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Task by ID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tasks/6a28d82ab740b303c46fb0f7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    "6a28d82ab740b303c46fb0f7"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "361"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"169-L6x7KmGCqXfs8MWOqzgIpNDL86c\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:22:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": {\n        \"task\": {\n            \"_id\": \"6a28d82ab740b303c46fb0f7\",\n            \"title\": \"Design database schema\",\n            \"description\": \"Create ERD and define all relationships\",\n            \"status\": \"pending\",\n            \"createdBy\": {\n                \"_id\": \"6a28d7c0b740b303c46fb0ed\",\n                \"name\": \"Jain Doe\",\n                \"email\": \"jain1@example.com\",\n                \"role\": \"admin\"\n            },\n            \"createdAt\": \"2026-06-10T03:21:14.393Z\",\n            \"updatedAt\": \"2026-06-10T03:21:14.393Z\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Task",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated task title\",\n  \"status\": \"in-progress\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tasks/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tasks",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6a28d82ab740b303c46fb0f7"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Task",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Updated task title\",\n  \"status\": \"in-progress\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tasks/6a28d82ab740b303c46fb0f7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    "6a28d82ab740b303c46fb0f7"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "400"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"190-vTVc8lTHYv+UxjucuCDozamxi7M\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:23:28 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Task updated successfully.\",\n    \"data\": {\n        \"task\": {\n            \"_id\": \"6a28d82ab740b303c46fb0f7\",\n            \"title\": \"Updated task title\",\n            \"description\": \"Create ERD and define all relationships\",\n            \"status\": \"in-progress\",\n            \"createdBy\": {\n                \"_id\": \"6a28d7c0b740b303c46fb0ed\",\n                \"name\": \"Jain Doe\",\n                \"email\": \"jain1@example.com\",\n                \"role\": \"admin\"\n            },\n            \"createdAt\": \"2026-06-10T03:21:14.393Z\",\n            \"updatedAt\": \"2026-06-10T03:23:28.202Z\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Task",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tasks/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tasks",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6a27e700d2c4e016d686c960"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Task",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tasks/6a27e700d2c4e016d686c960",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    "6a27e700d2c4e016d686c960"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "67"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"43-4fz5gEh9TahzeQ046y9/SUN6PnA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:23:54 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Task deleted successfully.\",\n    \"data\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Health Check",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "90"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5a-t8cXJfeROLSyGBVF3qeyUQ8K79M\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 10 Jun 2026 03:24:09 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"status\": \"OK\",\n    \"uptime\": 852.8341801,\n    \"timestamp\": \"2026-06-10T03:24:09.649Z\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api/v1"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
