@@ -11,12 +11,22 @@ connectDB();
 
 const app = express();
 
+const getCorsOrigin = () => {
+  const origin = process.env.CORS_ORIGIN;
+  if (!origin) return '*';
+  if (origin.includes(',')) {
+    return origin.split(',').map(o => o.trim().replace(/\/$/, ''));
+  }
+  return origin.trim().replace(/\/$/, '');
+};
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*',
+  origin: getCorsOrigin(),
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
+
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
