@@ -87,6 +87,83 @@ const Dashboard = () => {
     }
   };
 
+  const renderEmptyState = () => {
+    if (filter === 'in-progress') {
+      return (
+        <div className="flex flex-col items-center justify-center py-20 text-center card p-8 max-w-md mx-auto">
+          <div className="w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <p className="text-gray-200 text-sm font-semibold">No tasks in progress</p>
+          <p className="text-gray-400 text-xs mt-1 max-w-xs">Start working on your pending tasks to track your active progress!</p>
+          <button
+            onClick={() => setFilter('pending')}
+            className="mt-4 text-emerald-400 hover:text-emerald-300 text-xs font-semibold uppercase tracking-wider transition-colors"
+          >
+            View Pending Tasks &rarr;
+          </button>
+        </div>
+      );
+    }
+    if (filter === 'completed') {
+      return (
+        <div className="flex flex-col items-center justify-center py-20 text-center card p-8 max-w-md mx-auto">
+          <div className="w-12 h-12 rounded-full bg-green-500/10 text-green-400 flex items-center justify-center mb-4">
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <p className="text-gray-200 text-sm font-semibold">No completed tasks yet</p>
+          <p className="text-gray-400 text-xs mt-1 max-w-xs">Finish your active tasks or pending items to see them listed here.</p>
+          <button
+            onClick={() => setFilter('in-progress')}
+            className="mt-4 text-emerald-400 hover:text-emerald-300 text-xs font-semibold uppercase tracking-wider transition-colors"
+          >
+            View In-Progress Tasks &rarr;
+          </button>
+        </div>
+      );
+    }
+    if (filter === 'pending') {
+      return (
+        <div className="flex flex-col items-center justify-center py-20 text-center card p-8 max-w-md mx-auto">
+          <div className="w-12 h-12 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4">
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <p className="text-gray-200 text-sm font-semibold">No pending tasks</p>
+          <p className="text-gray-400 text-xs mt-1 max-w-xs">You are all caught up! Create a new task if you have new items to track.</p>
+          <button
+            onClick={openCreate}
+            className="mt-4 text-emerald-400 hover:text-emerald-300 text-xs font-semibold uppercase tracking-wider transition-colors"
+          >
+            + Create New Task
+          </button>
+        </div>
+      );
+    }
+    return (
+      <div className="flex flex-col items-center justify-center py-20 text-center card p-8 max-w-md mx-auto">
+        <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4">
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+        </div>
+        <p className="text-gray-200 text-sm font-semibold">No tasks found</p>
+        <p className="text-gray-400 text-xs mt-1 max-w-xs">Create your very first task to start organizing your schedule.</p>
+        <button
+          onClick={openCreate}
+          className="mt-4 btn-primary text-xs"
+        >
+          + Create Task
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-[#111827]">
       <Navbar />
@@ -135,15 +212,7 @@ const Dashboard = () => {
             <div className="w-6 h-6 border-2 border-green-500 border-t-transparent rounded-full animate-spin" />
           </div>
         ) : tasks.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-24 text-center">
-            <p className="text-gray-500 text-sm">No tasks found.</p>
-            <button
-              onClick={openCreate}
-              className="mt-3 text-green-400 hover:text-green-300 text-sm"
-            >
-              Create your first task
-            </button>
-          </div>
+          renderEmptyState()
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {tasks.map((task) => (

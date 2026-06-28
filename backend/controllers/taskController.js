@@ -1,12 +1,18 @@
+import { validationResult } from 'express-validator';
 import Task from '../models/Task.js';
 
 export const createTask = async (req, res, next) => {
   try {
-    const { title, description, status } = req.body;
-
-    if (!title) {
-      return res.status(400).json({ success: false, message: 'Task title is required.' });
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({
+        success: false,
+        message: 'Validation failed',
+        errors: errors.array().map((err) => ({ field: err.path, message: err.msg })),
+      });
     }
+
+    const { title, description, status } = req.body;
 
     const task = await Task.create({
       title,
@@ -62,6 +68,15 @@ export const getAllTasks = async (req, res, next) => {
 
 export const getTaskById = async (req, res, next) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({
+        success: false,
+        message: 'Validation failed',
+        errors: errors.array().map((err) => ({ field: err.path, message: err.msg })),
+      });
+    }
+
     const task = await Task.findById(req.params.id)
       .populate('createdBy', 'name email role')
       .select('-__v');
@@ -85,6 +100,15 @@ export const getTaskById = async (req, res, next) => {
 
 export const updateTask = async (req, res, next) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({
+        success: false,
+        message: 'Validation failed',
+        errors: errors.array().map((err) => ({ field: err.path, message: err.msg })),
+      });
+    }
+
     let task = await Task.findById(req.params.id);
 
     if (!task) {
@@ -123,6 +147,15 @@ export const updateTask = async (req, res, next) => {
 
 export const deleteTask = async (req, res, next) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({
+        success: false,
+        message: 'Validation failed',
+        errors: errors.array().map((err) => ({ field: err.path, message: err.msg })),
+      });
+    }
+
     const task = await Task.findById(req.params.id);
 
     if (!task) {
